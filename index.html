@@ -32,22 +32,23 @@
         }
         .search-bar {
             text-align: center;
-            margin: 2em 0;
+            margin: 1em 0;
         }
         .search-bar input, .search-bar select {
             padding: .5em;
-            margin: 0 .5em;
-            width: calc(100% - 20px); /* 调整：更好的移动设备兼容性 */
-            max-width: 300px; /* 限制最大宽度 */
+            width: calc(100% - 20px);
+            max-width: 300px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            margin-bottom: .5em;
         }
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            padding: 1em; /* 减少：移动设备上的填充 */
-            margin: 0; /* 新增：取消页边距 */
+            padding: 1em;
+            margin: 0;
+            padding-bottom: 60px; /* 增加底部填充，避免内容被页脚遮挡 */
         }
         .merchant {
             background-color: white;
@@ -55,13 +56,13 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 1em;
-            width: calc(100% - 40px); /* 调整：更好的移动设备兼容性 */
-            max-width: 350px; /* 限制最大宽度 */
+            width: calc(100% - 40px);
+            max-width: 350px;
             padding: 1em;
-            display: none; /* 初始隐藏 */
+            display: none;
         }
         .merchant img {
-            width: 100%; /* 调整：更好的移动设备兼容性 */
+            width: 100%;
             border-radius: 8px;
         }
         .merchant h2 {
@@ -71,7 +72,7 @@
             color: #555;
             display: flex;
             align-items: center;
-            margin-bottom: .5em; /* 新增：底边距 */
+            margin-bottom: .5em;
         }
         .merchant p img.info-icon {
             margin-right: .5em;
@@ -79,7 +80,7 @@
             height: 20px;
         }
         .tags {
-            display: none; /* 隐藏的标签 */
+            display: none;
         }
         .info-icon {
             width: 20px;
@@ -88,13 +89,14 @@
             margin-right: .5em;
         }
         footer {
-            background-color:  #c0392b;
+            background-color: #c0392b; /* 设置页脚背景颜色为红色 */
             color: white;
             text-align: center;
             padding: 1em 0;
             position: fixed;
             bottom: 0;
             width: 100%;
+            z-index: 100;
         }
     </style>
 </head>
@@ -115,17 +117,17 @@
     <div class="container" id="merchants">
         <!-- 示例商户 -->
         <div class="merchant" data-tags="餐饮,快餐">
-            <img src="path/to/image.jpg" alt="商户图片">
             <h2>宝西街道办事处</h2>
+            <img src="path/to/image.jpg" alt="商户图片">
             <p><img src="https://p0.meituan.net/csc/bcdb542f212478a1e2ead421cc8845e23886.png" class="info-icon">地址: <a href="https://map.baidu.com/search/%E5%AE%9D%E8%A5%BF%E8%A1%97%E9%81%93%E5%8A%9E%E4%BA%8B%E5%A4%84/@12680760.33685645,4192849.3421270503,19z?querytype=s&da_src=shareurl&wd=%E5%AE%9D%E8%A5%BF%E8%A1%97%E9%81%93%E5%8A%9E%E4%BA%8B%E5%A4%84&c=268&src=0&wd2=%E6%96%B0%E4%B9%A1%E5%B8%82%E5%87%A4%E6%B3%89%E5%8C%BA&pn=0&sug=1&l=13&b=(12633521,4091205;12686609,4120357)&from=webmap&biz_forward=%7B%22scaler%22:2,%22styles%22:%22pl%22%7D&sug_forward=5670728915a7918135b06c17&device_ratio=2" target="_blank">宝西街道办事处</a></p>
             <p><img src="https://p0.meituan.net/csc/38ec13f4d1b141aaf20182e3c54aad903442.png" class="info-icon">联系方式: <a href="tel:17303723396">17303723396</a></p>
             <p><img src="https://p0.meituan.net/csc/a2ecf5db14e80ac32dc6793f137e916f3857.png" class="info-icon">服务内容: 商户服务内容</p>
             <div class="tags">餐饮, 快餐</div>
         </div>
         <div class="merchant" data-tags="零售,书店">
-            <img src="path/to/image.jpg" alt="商户图片">
             <h2>宝西社区办事处</h2>
-            <p><img src="https://p0.meituan.net/csc/bcdb542f212478a1e2ead421cc8845e23886.png" class="info-icon">地址: <a href="https://map.baidu.com/search/%E6%96%B0%E4%B9%A1%E5%B8%82%E5%87%A4%E6%B3%89%E5%8C%BA%E5%AE%9D%E8%A5%BF%E7%A4%BE%E5%8C%BA%E5%8A%9E%E4%BA%8B%E5%A4%84/@12680791.095,4192877.27,19z?querytype=s&da_src=shareurl&wd=%E6%96%B0%E4%B9%A1%E5%B8%82%E5%87%A4%E6%B3%89%E5%8C%BA%E5%AE%9D%E8%A5%BF%E7%A4%BE%E5%8C%BA%E5%8A%9E%E4%BA%8B%E5%A4%84&c=152&src=0&wd2=%E6%96%B0%E4%B9%A1%E5%B8%82%E5%87%A4%E6%B3%89%E5%8C%BA&pn=0&sug=1&l=19&b=(12680345.58685645,4192621.5921270503;12681175.08685645,4193077.0921270503)&from=webmap&biz_forward=%7B%22scaler%22:2,%22styles%22:%22pl%22%7D&sug_forward=43b7e889eb5d2f1759f6be87&device_ratio=2" target="_blank">宝西社区办事处</a></p>
+            <img src="path/to/image.jpg" alt="商户图片">
+            <p><img src="https://p0.meituan.net/csc/bcdb542f212478a1e2ead421cc8845e23886.png" class="info-icon">地址: <a href="https://map.baidu.com/search/%E6%96%B0%E4%B9%A1%E5%B8%82%E5%87%A4%E6%B3%89%E5%8C%BA%E5%AE%9D%E8%A5%BF%E7%A4%BE%E5%8C%BA%E5%8A%9E%E4%BA%8B%E5%A4%84/@12680791.095,4192877.27,19z?querytype=s&da_src=shareurl&wd=%E6%96%B0%E4%B9%A1%E5%B8%82%E5%87%A4%E6%B3%89%E5%8C%BA%E5%AE%9D%E8%A5%BF%E7%A4%BE%E5%8C%BA%E5%8A%9E%E4%BA%8B%E5%A4%84&c=152&src=0&wd2=%E6%96%B0%E4%B9%A1%E5%B8%82%E5%87%A4%E6%B3%89%E5%8C%BA&pn=0&sug=1&l=19&b=(12680345.58685645,4192621.5921270503;12681175.08685645,4193077.0921270503)&from=webmap&biz_forward=%7B%22scaler%22:2,%22styles%22:%22pl%22:%22pl%22%7D&sug_forward=43b7e889eb5d2f1759f6be87&device_ratio=2" target="_blank">宝西社区办事处</a></p>
             <p><img src="https://p0.meituan.net/csc/38ec13f4d1b141aaf20182e3c54aad903442.png" class="info-icon">联系方式: <a href="tel:17337215754">17337215754</a></p>
             <p><img src="https://p0.meituan.net/csc/a2ecf5db14e80ac32dc6793f137e916f3857.png" class="info-icon">服务内容: 商户服务内容</p>
             <div class="tags">零售, 书店</div>
